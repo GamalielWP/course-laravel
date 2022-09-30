@@ -19,4 +19,9 @@ Route::get('/count-mentor', 'CourseController@countMentor');
 Route::get('/count-member', 'CourseController@countMember');
 
 Route::get('/add-index', 'CourseController@addIndex');
-Route::post('/add-course', 'CourseController@addCourse');
+Route::post('/add-course', 'CourseController@createCourse');
+
+Route::get('/edit-index/{id}', 'CourseController@editIndex');
+Route::patch('/edit-course/{id}', 'CourseController@editCourse');
+
+Route::get('/delete-course/{id}', 'CourseController@deleteCourse');

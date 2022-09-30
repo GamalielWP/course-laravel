@@ -2,8 +2,7 @@
 
 @section('content')
 
-    <div class="container">
-        <a href="">Tambah Course</a>
+        <a href="/add-index">Tambah Course</a>
         <table class="table">
             <thead>
             <tr>
@@ -11,6 +10,7 @@
                 <th scope="col">Member Name</th>
                 <th scope="col">Course</th>
                 <th scope="col">Mentor</th>
+                <th scope="col">Aksi</th>
             </tr>
             </thead>
             <tbody>
@@ -20,6 +20,10 @@
                     <td>{{$cs->member->member_name}}</td>
                     <td>{{$cs->type->name}}</td>
                     <td>{{$cs->mentor->mentor_name}}</td>
+                    <td>
+                        <a href="/edit-index/{{$cs->id}}">Edit</a>
+                        <a href="/delete-course/{{$cs->id}}">Delete</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -31,7 +35,7 @@
                     echo $mt->mentor_name.', ';
                 }
             ?>
-        </span><a href="/count-mentor">Refresh</a><br>
+        </span><a href="/count-mentor">Temukan</a><br>
 
         <span>Jumlah yang mengambil course Golang : {{$golang}}</span><br>
         
@@ -41,7 +45,6 @@
                     echo $mb->member_name.', ';
                 }
             ?>
-        </span><a href="/count-member">Refresh</a><br>
-    </div>
+        </span><a href="/count-member">Temukan</a><br>
 
 @endsection

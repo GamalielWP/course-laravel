@@ -56,11 +56,48 @@ class CourseController extends Controller
 
     public function addIndex()
     {
-        return view ('');
+        $member = Member::all();
+        $type = Type::all();
+        $mentor = Mentor::all();
+        return view ('add-course', compact('member', 'type', 'mentor'));
     }
 
-    public function createCourse()
+    public function createCourse(Request $request)
     {
-        
+        Course::create([
+            'member_id' => $request->member,
+            'course_id' => $request->course,
+            'mentor_id' => $request->mentor
+        ]);
+
+        return redirect('/');
+    }
+
+    public function editIndex($id)
+    {
+        $course = Course::findOrFail($id);
+        $member = Member::all();
+        $type = Type::all();
+        $mentor = Mentor::all();
+
+        return view ('edit-course', compact('member', 'type', 'mentor', 'course'));
+    }
+
+    public function editCourse(Request $request, $id)
+    {
+        Course::findOrFail($id)->update([
+            'member_id' => $request->member,
+            'course_id' => $request->course,
+            'mentor_id' => $request->mentor
+        ]);
+
+        return redirect('/');
+    }
+
+    public function deleteCourse($id)
+    {
+        Course::findOrFail($id)->delete();
+
+        return redirect('/');
     }
 }
