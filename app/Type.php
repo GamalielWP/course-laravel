@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CourseType extends Model
+class Type extends Model
 {
     protected $fillable = [
-        'type'
+        'name'
     ];
 }

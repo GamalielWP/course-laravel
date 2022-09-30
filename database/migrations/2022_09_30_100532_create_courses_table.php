@@ -18,7 +18,7 @@ class CreateCoursesTable extends Migration
             $table->bigInteger('member_id')->unsigned();
             $table->foreign('member_id')->references('id')->on('members');
             $table->bigInteger('course_id')->unsigned();
-            $table->foreign('course_id')->references('id')->on('course_types');
+            $table->foreign('course_id')->references('id')->on('types');
             $table->bigInteger('mentor_id')->unsigned();
             $table->foreign('mentor_id')->references('id')->on('mentors');
             $table->timestamps();

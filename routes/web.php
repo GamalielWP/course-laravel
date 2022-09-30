@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'CourseController@index');
+
+Route::get('/count-mentor', 'CourseController@countMentor');
+Route::get('/count-member', 'CourseController@countMember');
+
+Route::get('/add-index', 'CourseController@addIndex');
+Route::post('/add-course', 'CourseController@addCourse');

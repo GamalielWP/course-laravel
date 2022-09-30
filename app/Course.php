@@ -14,9 +14,9 @@ class Course extends Model
     {
         return $this->belongsTo('App\Member');
     }
-    public function course_type()
+    public function type()
     {
-        return $this->belongsTo('App\CourseType');
+        return $this->belongsTo('App\Type', 'course_id', 'id');
     }
     public function mentor()
     {
