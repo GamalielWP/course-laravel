@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'CourseController@index');
+Route::get('/data-table', 'CourseController@dataTable')->name('dataCourse');
 
 Route::get('/count-mentor', 'CourseController@countMentor');
 Route::get('/count-member', 'CourseController@countMember');

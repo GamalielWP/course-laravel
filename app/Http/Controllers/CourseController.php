@@ -7,6 +7,7 @@ use App\Member;
 use App\Mentor;
 use App\Type;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 
 class CourseController extends Controller
 {
@@ -24,6 +25,34 @@ class CourseController extends Controller
         $member = member::where('total_course', $max_member)->get();
 
         return view('courses', compact('course', 'golang', 'mentor', 'member'));
+    }
+
+    public function dataTable()
+    {
+        $course = Course::all();
+
+        return Datatables::of($course)
+            ->addIndexColumn()
+            ->editColumn('member', function($course){
+                return $course->member->member_name;
+            })
+            ->editColumn('course', function($course){
+                return $course->type->name;
+            })
+            ->editColumn('mentor', function($course){
+                return $course->mentor->mentor_name;
+            })
+            ->addColumn('action', function($course){
+                $btn = '
+                    <a href="/edit-index/'.$course->id.'">Edit</a>
+                    |
+                    <a href="/delete-course/'.$course->id.'">Delete</a>
+                ';
+
+                return $btn;
+            })
+            ->rawColumns(['member', 'course', 'mentor', 'action'])
+            ->make(true);
     }
 
     public function countMentor()

@@ -3,7 +3,7 @@
 @section('content')
 
         <a href="/add-index">Tambah Course</a>
-        <table class="table">
+        <table class="table" id="data-tabel">
             <thead>
             <tr>
                 <th scope="col">#</th>
@@ -14,7 +14,7 @@
             </tr>
             </thead>
             <tbody>
-                @foreach ($course as $cs)
+                {{-- @foreach ($course as $cs)
                 <tr>
                     <th scope="row">{{$loop->iteration}}</th>
                     <td>{{$cs->member->member_name}}</td>
@@ -25,7 +25,7 @@
                         <a href="/delete-course/{{$cs->id}}">Delete</a>
                     </td>
                 </tr>
-                @endforeach
+                @endforeach --}}
             </tbody>
         </table>
         
@@ -46,5 +46,26 @@
                 }
             ?>
         </span><a href="/count-member">Temukan</a><br>
+
+@endsection
+
+@section('table')
+    
+<script>
+    $(document).ready( function () {
+        $('#data-tabel').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('dataCourse') }}",
+            columns: [
+                { data: 'DT_RowIndex', name: 'DT_RowIndex' },
+                { data: 'member', name: 'member' },
+                { data: 'course', name: 'course' },
+                { data: 'mentor', name: 'mentor' },
+                { data: 'action', name: 'action' },
+            ]
+        });
+    } );
+</script>
 
 @endsection
