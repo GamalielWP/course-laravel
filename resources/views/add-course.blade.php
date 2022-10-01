@@ -3,7 +3,7 @@
 @section('content')
     
 <div class="center">
-    <div class="card card-widht">
+    <div class="card shadow card-widht">
         <div class="card-header bg-primary">
             <span class="text-white">Add Course</span>
         </div>
