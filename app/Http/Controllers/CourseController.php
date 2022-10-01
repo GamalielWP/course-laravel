@@ -44,9 +44,9 @@ class CourseController extends Controller
             })
             ->addColumn('action', function($course){
                 $btn = '
-                    <a href="/edit-index/'.$course->id.'">Edit</a>
+                    <a class="btn btn-success btn-sm" href="/edit-index/'.$course->id.'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                     |
-                    <a href="/delete-course/'.$course->id.'">Delete</a>
+                    <a class="btn btn-danger btn-sm" href="/delete-course/'.$course->id.'"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 ';
 
                 return $btn;

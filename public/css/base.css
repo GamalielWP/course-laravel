@@ -1,0 +1,26 @@
+.font-medium-blue {
+    color: #191970;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.shadow {
+    box-shadow: 3px 3px 2px rgba(0,0,0,0.4);
+    padding: 10px;
+}
+
+.float-right {
+    float: right;
+}
+
+.card-widht {
+    width: 18rem;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

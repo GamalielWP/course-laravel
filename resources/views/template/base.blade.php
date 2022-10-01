@@ -15,14 +15,17 @@
 
     {{-- DataTables CSS --}}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+
+    {{-- Custom CSS --}}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/base.css')}}">
 </head>
 
 <body>
-    <nav class="navbar bg-light">
+    <nav class="navbar bg-light shadow mb-4">
         <div class="container">
           <a class="navbar-brand" href="/">
             <img src="{{ asset('img/mtm.png') }}" alt="MTM" width="60" height="48">
-            Soal Skill test Fullstack Developer
+            <span class="font-medium-blue font-bold">Soal Skill test Fullstack Developer</span>
           </a>
         </div>
     </nav>

@@ -2,7 +2,11 @@
 
 @section('content')
 
-        <a href="/add-index">Tambah Course</a>
+    <a class="btn btn-primary" href="/add-index">
+        Tambah Course
+        <i class="fa fa-user-plus" aria-hidden="true"></i>
+    </a>
+    <div class="table-responsive mb-4 mt-2">
         <table class="table" id="data-tabel">
             <thead>
             <tr>
@@ -14,38 +18,36 @@
             </tr>
             </thead>
             <tbody>
-                {{-- @foreach ($course as $cs)
-                <tr>
-                    <th scope="row">{{$loop->iteration}}</th>
-                    <td>{{$cs->member->member_name}}</td>
-                    <td>{{$cs->type->name}}</td>
-                    <td>{{$cs->mentor->mentor_name}}</td>
-                    <td>
-                        <a href="/edit-index/{{$cs->id}}">Edit</a>
-                        <a href="/delete-course/{{$cs->id}}">Delete</a>
-                    </td>
-                </tr>
-                @endforeach --}}
+
             </tbody>
         </table>
+    </div>
         
-        <span>Mentor yang mengambil course terbanyak :
-            <?php
-                foreach ($mentor as $mt) {
-                    echo $mt->mentor_name.', ';
-                }
-            ?>
-        </span><a href="/count-mentor">Temukan</a><br>
+    <h6>Mentor yang mengambil course terbanyak :
+        <?php
+            foreach ($mentor as $mt) {
+                echo $mt->mentor_name.', ';
+            }
+        ?>
+    </h6>
+    <a class="btn btn-primary btn-sm" href="/count-mentor">
+        Temukan
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </a>
+        
+    <h6>Member yang mengambil course terbanyak :
+        <?php
+            foreach ($member as $mb) {
+                 echo $mb->member_name.', ';
+            }
+        ?>
+    </h6>
+    <a class="btn btn-primary btn-sm" href="/count-member">
+        Temukan
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </a>
 
-        <span>Jumlah yang mengambil course Golang : {{$golang}}</span><br>
-        
-        <span>Member yang mengambil course terbanyak :
-            <?php
-                foreach ($member as $mb) {
-                    echo $mb->member_name.', ';
-                }
-            ?>
-        </span><a href="/count-member">Temukan</a><br>
+    <h6>Jumlah yang mengambil course Golang : {{$golang}}</h6>
 
 @endsection
 
