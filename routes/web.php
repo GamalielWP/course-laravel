@@ -19,7 +19,6 @@ Route::get('/data-table', 'CourseController@dataTable')->name('dataCourse');
 Route::get('/count-mentor', 'CourseController@countMentor');
 Route::get('/count-member', 'CourseController@countMember');
 
-Route::get('/add-index', 'CourseController@addIndex');
 Route::post('/add-course', 'CourseController@createCourse');
 
 Route::get('/edit-index/{id}', 'CourseController@editIndex');

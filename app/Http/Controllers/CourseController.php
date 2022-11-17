@@ -24,7 +24,11 @@ class CourseController extends Controller
         $max_member = member::max('total_course');
         $member = member::where('total_course', $max_member)->get();
 
-        return view('courses', compact('course', 'golang', 'mentor', 'member'));
+        $allMember = Member::all();
+        $allType = Type::all();
+        $allMentor = Mentor::all();
+
+        return view('courses', compact('course', 'golang', 'mentor', 'member', 'allMember', 'allType', 'allMentor'));
     }
 
     public function dataTable()
@@ -102,14 +106,6 @@ class CourseController extends Controller
         }
 
         return redirect('/');
-    }
-
-    public function addIndex()
-    {
-        $member = Member::all();
-        $type = Type::all();
-        $mentor = Mentor::all();
-        return view ('add-course', compact('member', 'type', 'mentor'));
     }
 
     public function createCourse(Request $request)
