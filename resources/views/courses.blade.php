@@ -79,17 +79,13 @@
         <h5 class="card-header">Soal 1</h5>
         <div class="card-body">
             <h5 class="card-title">Mentor yang mengambil course terbanyak adalah</h5>
-            <p class="card-text">
+            <p class="card-text badge bg-primary text-wrap">
                 <?php
-                    foreach ($mentor as $mt) {
-                        echo $mt->mentor_name.', ';
+                    foreach ($mentorName as $name) {
+                        echo $name.', ';
                     }
                 ?>
             </p>
-            <a class="btn btn-primary" href="/count-mentor">
-                Temukan
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </a>
         </div>
     </div>
     <div class="card mb-4 shadow">
@@ -105,17 +101,13 @@
         <h5 class="card-header">Soal 3</h5>
         <div class="card-body">
             <h5 class="card-title">Member yang mengambil course terbanyak adalah</h5>
-            <p class="card-text">
+            <p class="card-text badge bg-primary text-wrap">
             <?php
-                foreach ($member as $mb) {
-                    echo $mb->member_name.', ';
+                foreach ($memberName as $name) {
+                    echo $name.', ';
                 }
             ?>
             </p>
-            <a class="btn btn-primary" href="/count-member">
-                Temukan
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </a>
         </div>
     </div>
 

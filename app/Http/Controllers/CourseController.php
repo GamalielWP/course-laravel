@@ -18,17 +18,43 @@ class CourseController extends Controller
         $type = Type::where('name', 'Golang')->first();
         $golang = Course::where('course_id', $type->id)->count();
 
-        $max_mentor = Mentor::max('total_course');
-        $mentor = Mentor::where('total_course', $max_mentor)->get();
+        $allType = Type::all();
 
-        $max_member = member::max('total_course');
-        $member = member::where('total_course', $max_member)->get();
+        $allMentor = Mentor::all();
+        $maxCourseMentor = 0;
+
+        foreach ($allMentor as $mt) {
+            $count = Course::where('mentor_id', $mt->id)->count();
+            if ($count > $maxCourseMentor) {
+                $maxCourseMentor = $count;
+            }
+        }
+        foreach ($allMentor as $mt) {
+            $count = Course::where('mentor_id', $mt->id)->count();
+            if ($count == $maxCourseMentor) {
+                $highestMentor = Mentor::where('id', $mt->id)->first();
+                $mentorName[] = $highestMentor->mentor_name;
+            }
+        }
 
         $allMember = Member::all();
-        $allType = Type::all();
-        $allMentor = Mentor::all();
+        $maxCourseMember = 0;
 
-        return view('courses', compact('course', 'golang', 'mentor', 'member', 'allMember', 'allType', 'allMentor'));
+        foreach ($allMember as $mt) {
+            $count = Course::where('member_id', $mt->id)->count();
+            if ($count > $maxCourseMember) {
+                $maxCourseMember = $count;
+            }
+        }
+        foreach ($allMember as $mb) {
+            $count = Course::where('member_id', $mb->id)->count();
+            if ($count == $maxCourseMember) {
+                $highestMember = Member::where('id', $mb->id)->first();
+                $memberName[] = $highestMember->member_name;
+            }
+        }
+
+        return view('courses', compact('course', 'golang', 'mentorName', 'memberName', 'allMember', 'allType', 'allMentor'));
     }
 
     public function dataTable()
@@ -78,34 +104,6 @@ class CourseController extends Controller
             })
             ->rawColumns(['member', 'course', 'mentor', 'action'])
             ->make(true);
-    }
-
-    public function countMentor()
-    {
-        $course = Course::all();
-
-        foreach ($course as $mt) {
-            $max_mentor = Course::where('mentor_id', $mt->mentor_id)->count();
-            Mentor::where('id', $mt->mentor_id)->update([
-                'total_course' => $max_mentor
-            ]);
-        }
-
-        return redirect('/');
-    }
-
-    public function countMember()
-    {
-        $course = Course::all();
-
-        foreach ($course as $mb) {
-            $max_member = Course::where('member_id', $mb->member_id)->count();
-            Member::where('id', $mb->member_id)->update([
-                'total_course' => $max_member
-            ]);
-        }
-
-        return redirect('/');
     }
 
     public function createCourse(Request $request)
